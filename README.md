@@ -1,9 +1,10 @@
-# 🧠 MASSA Prototype
-
-### Memory-Augmented Sequence Modeling
+# 🧠 MASSA: Memory-Augmented Sequence Modeling
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat\&logo=python)
 ![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red?style=flat\&logo=pytorch)
+![NumPy](https://img.shields.io/badge/NumPy-Numerical-blue)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-orange)
+![Scikit-learn](https://img.shields.io/badge/Scikit--Learn-ML-yellow)
 ![Status](https://img.shields.io/badge/Project-Research%20Prototype-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -11,71 +12,77 @@
 
 ## 📌 Overview
 
-This project explores how **memory mechanisms improve sequence learning**.
+This project investigates the limitations of traditional sequence models and demonstrates how **memory-augmented architectures improve learning of long-range dependencies**.
 
-Traditional models like LSTM compress entire sequences into hidden states, often losing important information.
-This project introduces a **Memory-Augmented Model with attention**, allowing the model to focus on key parts of the sequence.
+Standard LSTM models compress sequence information into fixed hidden states, often leading to information loss.
+This implementation introduces a **Memory-Augmented Model with attention**, enabling selective focus on important sequence elements.
 
 ---
 
 ## 🎯 Objective
 
 * Compare **LSTM vs Memory-Augmented Model**
-* Understand **long-term dependency learning**
-* Show impact of **attention-based memory**
-* Build a simple, explainable research prototype
+* Evaluate **long-term dependency learning**
+* Demonstrate the effectiveness of **attention mechanisms**
+* Build a minimal, interpretable **research prototype**
 
 ---
 
-## 🧪 Problem Setup
+## 🧪 Problem Formulation
 
-### Input Sequence
+### Input
 
-```
+```text
 [3, 8, 1, 5, 9, ...]
 ```
 
-### Target Output
+### Target
 
-```
+```text
 (first_element + last_element) % 10
 ```
 
-👉 Requires:
+This task enforces:
 
-* remembering the **start**
-* tracking the **end**
-* combining both → real memory task
-
----
-
-## 🏗️ Project Structure
-
-```
-massa-memory-model/
-│
-├── data/
-│   └── dataset.py
-│
-├── models/
-│   ├── lstm_model.py
-│   └── memory_model.py
-│
-├── results/
-│   ├── loss.png
-│   └── accuracy.png
-│
-├── main.py
-├── requirements.txt
-└── README.md
-```
+* retention of **early sequence information**
+* awareness of **late sequence elements**
+* combination of both → requiring **memory + reasoning**
 
 ---
 
-## ⚙️ Installation
+## 🏗️ Architecture
+
+### 🔹 LSTM Model
+
+* Embedding + Positional Encoding
+* Multi-layer LSTM
+* Mean pooling over sequence
+* Fully connected output
+
+### 🔹 Memory-Augmented Model
+
+* Embedding + Positional Encoding
+* Multi-layer LSTM backbone
+* Attention mechanism for dynamic weighting
+* Context vector aggregation
+* Fully connected output
+
+---
+
+## 🛠️ Tech Stack
+
+* **Python 3.10+**
+* **PyTorch** – model design & training
+* **NumPy** – synthetic data generation
+* **Matplotlib** – visualization
+* **Scikit-learn** – dataset splitting
+
+---
+
+## 📦 Installation
 
 ```bash
-git clone https://github.com/your-username/massa-memory-model.git
+git clone https://github.com/dusssi/massa-memory-model.git
 cd massa-memory-model
 
 python -m venv .venv
@@ -86,7 +93,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Run
+## ▶️ Usage
 
 ```bash
 python main.py
@@ -106,45 +113,36 @@ python main.py
 
 ---
 
-## 📈 Sample Performance
+## 📈 Performance
 
 | Model        | Accuracy |
 | ------------ | -------- |
 | LSTM         | 0.36     |
 | Memory Model | 0.53     |
 
-👉 Memory model shows clear improvement using attention.
-
 ---
 
 ## 🧠 Key Insight
 
-> LSTM compresses sequence → loses information
-> Memory model attends → keeps what matters
+> Sequence compression (LSTM) is insufficient for tasks requiring selective recall.
+> Attention-based memory enables models to retain and prioritize relevant information.
 
 ---
 
-## 🔬 Explanation
+## 🔬 Analysis
 
-* **LSTM Model**
-
-  * Uses sequence summarization
-  * Limited ability to capture long-range dependencies
-
-* **Memory Model**
-
-  * Uses attention mechanism
-  * Dynamically focuses on important sequence elements
-  * Better performance on dependency-heavy tasks
+* LSTM struggles with **information dilution**
+* Memory model improves **feature relevance**
+* Attention acts as a **soft retrieval mechanism**
 
 ---
 
 ## 🚀 Future Work
 
-* Add Transformer comparison
-* Use real datasets (NLP / time-series)
-* Improve attention mechanism
-* Tune hyperparameters
+* Transformer-based comparison
+* Real-world datasets (NLP, time-series)
+* Advanced memory modules
+* Hyperparameter optimization
 
 ---
 
@@ -152,8 +150,8 @@ python main.py
 
 Inspired by:
 
-* Memory-Augmented Models
-* State Space Models (Mamba)
+* Memory-Augmented Neural Networks
+* State Space Models (e.g., Mamba)
 * Attention-based architectures
 
 ---
@@ -166,9 +164,8 @@ SGT University
 
 ---
 
-## ⚠️ Disclaimer
+## 📌 Notes
 
-This is a **research prototype** built for understanding concepts.
-Accuracy is secondary to **learning behavior and comparison**.
+This project is designed for **conceptual understanding and comparative analysis**, not production deployment.
 
 ---
